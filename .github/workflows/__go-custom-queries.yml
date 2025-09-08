@@ -84,7 +84,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setup Python on MacOS
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         if: >-
           runner.os == 'macOS' && (
 
@@ -96,14 +96,14 @@ jobs:
         with:
           python-version: '3.11'
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Prepare test
         id: prepare-test
         uses: ./.github/actions/prepare-test
         with:
           version: ${{ matrix.version }}
           use-all-platform-bundle: 'false'
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version: '>=1.21.0'
       - uses: ./../action/init
